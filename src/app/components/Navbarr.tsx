@@ -5,8 +5,9 @@ import SigninButton from "./SignInButton"
 
 export default function Navbarr() {
     const {data: session} = useSession()
-   
-    return(
+
+    if(session && session.user){
+      return(
         <div className="navbar text-gray-700">
         <div className="navbar-start">
           <div className="dropdown">
@@ -25,31 +26,26 @@ export default function Navbarr() {
               <li><a>Item 3</a></li>
             </ul>
           </div>
-          <h1 className=" normal-case text-4xl font-extrabold font-mono">FAKE-TAXI</h1>
+          <h1 className=" normal-case text-4xl max-sm:text-2xl font-extrabold font-mono">FAKE-TAXI</h1>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-          <li className="mb-2">
+          <li className="mb-2 px-4">
   <a href="#" className="bg-gradient-to-tr from-blue-500 to-pink-500 rounded-full text-white flex items-center justify-center  font-semibold transform transition-transform hover:scale-110">
     +
   </a>
 </li>
 
-            <li tabIndex={0}><a className="bg-gradient-to-tr from-blue-500 to-pink-500 rounded-full text-white flex items-center justify-center  font-semibold transform transition-transform hover:scale-110">Explore</a></li>
-            <li><a className="bg-gradient-to-tr from-blue-500 to-pink-500 rounded-full text-white flex items-center justify-center  font-semibold transform transition-transform hover:scale-110">Organization</a></li>
+            <li tabIndex={0} className="px-4"><a className="bg-gradient-to-tr from-blue-500 to-pink-500 rounded-full text-white flex items-center justify-center  font-semibold transform transition-transform hover:scale-110">Explore</a></li>
+            <li className="px-4"><a className="bg-gradient-to-tr from-blue-500 to-pink-500 rounded-full text-white flex items-center justify-center  font-semibold transform transition-transform hover:scale-110">Organization</a></li>
           </ul>
         </div>
         <div className="navbar-end">
-        { !session ? (
-            <div className="flex-none gap-2">
-                <SigninButton />
-            </div>
-        ) : (
-            <div className="dropdown dropdown-end">
+        <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <img src={session.user?.image?.toString()} alt="" className="rounded-full" />
       </label>
-       <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+       <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content  rounded-box w-52">
        <li>
           <a className="justify-between">
             Profile
@@ -59,8 +55,21 @@ export default function Navbarr() {
         <li><a>Settings</a></li>
       </ul> 
     </div>
-        ) }
         
+        </div>
+      </div>
+      )
+    }
+   
+    return(
+        <div className="navbar text-gray-700">
+        <div className="navbar-start">
+          <h1 className=" normal-case text-4xl max-sm:text-2xl font-extrabold font-mono">FAKE-TAXI</h1>
+        </div>
+        <div className="navbar-end">
+            <div className="flex-none gap-2">
+                <SigninButton />
+            </div>
         </div>
       </div>
     )

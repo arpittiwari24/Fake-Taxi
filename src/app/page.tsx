@@ -27,9 +27,14 @@ export default function Home() {
 
   return (
     <>
-    <div className='pt-10 '>
-    <Footer />
+  <div className="hero ">
+  <div className="hero-content flex-col lg:flex-row-reverse">
+    <img src="https://media.tenor.com/ihwVwX25ZjYAAAAj/niziu-rima.gif" className="max-w-sm rounded-lg " />
+    <div>
+      <h1 className="text-5xl font-bold">Coming Soon , Until Then </h1>
     </div>
+  </div>
+</div>
     </>
   )
 }
