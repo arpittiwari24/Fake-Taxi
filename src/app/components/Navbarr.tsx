@@ -52,7 +52,7 @@ export default function Navbarr() {
             <span className="badge">New</span>
           </a>
         </li>
-        <li><a>Settings</a></li>
+        <li><SigninButton /></li>
       </ul> 
     </div>
         
