@@ -2,6 +2,7 @@
 
 import { useSession } from "next-auth/react"
 import SigninButton from "./SignInButton"
+import Link from "next/link"
 
 export default function Navbarr() {
     const {data: session} = useSession()
@@ -31,9 +32,9 @@ export default function Navbarr() {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
           <li className="mb-2 px-4">
-  <a href="#" className="bg-gradient-to-tr from-blue-500 to-pink-500 rounded-full text-white flex items-center justify-center  font-semibold transform transition-transform hover:scale-110">
+  <Link href="/post" className="bg-gradient-to-tr from-blue-500 to-pink-500 rounded-full text-white flex items-center justify-center  font-semibold transform transition-transform hover:scale-110">
     +
-  </a>
+  </Link>
 </li>
 
             <li tabIndex={0} className="px-4"><a className="bg-gradient-to-tr from-blue-500 to-pink-500 rounded-full text-white flex items-center justify-center  font-semibold transform transition-transform hover:scale-110">Explore</a></li>
