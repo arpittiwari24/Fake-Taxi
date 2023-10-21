@@ -16,7 +16,7 @@ export default function MyProfile() {
     useEffect(() => {
         if (email) {
             axios
-                .get(`http://localhost:5000/api/post/my?email=${email}`, {
+                .get(`https://fake-taxi.onrender.com/api/post/my?email=${email}`, {
                     headers: {
                         "Content-Type": "application/json",
                     },

@@ -17,13 +17,13 @@ export default function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const postsResponse = await axios.get('http://localhost:5000/api/post/all');
+        const postsResponse = await axios.get('https://fake-taxi.onrender.com/api/post/all');
         const posts: Post[] = postsResponse.data;
 
         // Fetch comments for each post
         const postsWithComments = await Promise.all(
           posts.map(async (post) => {
-            const commentsResponse = await axios.get(`http://localhost:5000/api/post/comment/post/${post._id}`);
+            const commentsResponse = await axios.get(`https://fake-taxi.onrender.com/api/post/comment/post/${post._id}`);
             const comments : Comment[] = commentsResponse.data;
             return { ...post, comments };
           })

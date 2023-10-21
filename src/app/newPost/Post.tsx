@@ -19,7 +19,7 @@ export default function Post() {
     function handleSubmit(e: any) {
         e.preventDefault()
 
-        axios.post("http://localhost:5000/api/post/new", {
+        axios.post("https://fake-taxi.onrender.com/api/post/new", {
            email,name, title, content
         })
         .then((response) => {

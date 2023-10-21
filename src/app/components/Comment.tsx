@@ -15,7 +15,7 @@ function CommentComponent({ postId }: CommentProps) {
 
     const handleCommentSubmit = async () => {
         try {
-            const response = await axios.post<{ comment: { _id: string, name: string, content: string } }>(`http://localhost:5000/api/post/comment/new`, {
+            const response = await axios.post<{ comment: { _id: string, name: string, content: string } }>(`https://fake-taxi.onrender.com/api/post/comment/new`, {
                 postId, // Pass the post ID to associate the comment with the post
                 name: session?.user?.name ?? '', // You can adjust this based on your user authentication
                 content: comment,
