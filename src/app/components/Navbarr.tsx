@@ -32,7 +32,7 @@ export default function Navbarr() {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
           <li className="mb-2 px-4">
-  <Link href="/post" className="bg-gradient-to-tr from-blue-500 to-pink-500 rounded-full text-white flex items-center justify-center  font-semibold transform transition-transform hover:scale-110">
+  <Link href="/newPost" className="bg-gradient-to-tr from-blue-500 to-pink-500 rounded-full text-white flex items-center justify-center  font-semibold transform transition-transform hover:scale-110">
     +
   </Link>
 </li>
@@ -48,10 +48,10 @@ export default function Navbarr() {
       </label>
        <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content  rounded-box w-52">
        <li>
-          <a className="justify-between">
+          <Link href="/myprofile" className="justify-between">
             Profile
             <span className="badge">New</span>
-          </a>
+          </Link>
         </li>
         <li><SigninButton /></li>
       </ul> 
