@@ -10,7 +10,7 @@ import CommentComponent from './components/Comment'
 import Link from "next/link"
 
 export default function Home() {
-  const {data: session} = useSession()
+  const { data: session } = useSession()
 
   const [latestData, setLatestData] = useState<Post[]>([])
 
@@ -24,7 +24,7 @@ export default function Home() {
         const postsWithComments = await Promise.all(
           posts.map(async (post) => {
             const commentsResponse = await axios.get(`https://fake-taxi.onrender.com/api/post/comment/post/${post._id}`);
-            const comments : Comment[] = commentsResponse.data;
+            const comments: Comment[] = commentsResponse.data;
             return { ...post, comments };
           })
         );
@@ -52,19 +52,18 @@ export default function Home() {
     content: string;
   }
 
-
-  if(!session) {
+  if (!session) {
     return (
       <>
-      <div className='py-10'>
-      <Hero />
-      </div>
-      <div className="py-10">
-      <FeaturesSection />
-      </div>
-      <div className='pt-10'>
-    <Footer />
-    </div>
+        <div className='py-10'>
+          <Hero />
+        </div>
+        <div className="py-10">
+          <FeaturesSection />
+        </div>
+        <div className='pt-10'>
+          <Footer />
+        </div>
       </>
     )
   }
@@ -73,16 +72,19 @@ export default function Home() {
     <div className='flex flex-col items-center'>
       {latestData.map((post: any) => (
         <div key={post._id} className="mb-8 border rounded-lg bg-white shadow-lg p-4">
-          <div className="flex items-center mb-4">
-          </div>
-         <Link href="/post">
-         <div className="mt-4">
-          <p className="font-semibold text-lg mb-2">{post.name}</p>
-          <p className=" text-lg mb-2">{post.title}</p>
-            <p className="mb-4 shadow-lg bg-black text-white">{post.content}</p>
-            <p className="mb-4 shadow-lg bg-black text-white">{post.comments[0].content}</p>
-          </div>
-         </Link>
+          <div className="flex items-center mb-4"></div>
+          <Link href="/post">
+            <div className="mt-4">
+              <p className="font-semibold text-lg mb-2">{post.name}</p>
+              <p className="text-lg mb-2">{post.title}</p>
+              <p className="mb-4 shadow-lg bg-black text-white">{post.content}</p>
+              {post.comments && post.comments.length > 0 ? (
+                <p className="mb-4 shadow-lg bg-black text-white">{post.comments[0].content}</p>
+              ) : (
+                <p className="mb-4 shadow-lg bg-black text-white"></p>
+              )}
+            </div>
+          </Link>
           <CommentComponent postId={post._id} />
         </div>
       ))}
